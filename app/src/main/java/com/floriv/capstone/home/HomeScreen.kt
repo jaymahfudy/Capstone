@@ -9,15 +9,12 @@ import org.koin.androidx.compose.getViewModel
 
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomeScreen() {
     val viewModel = getViewModel<HomeViewModel>()
     viewModel.getAllGames()
     val viewState by viewModel.state.collectAsState()
     viewState.data?.let {
-        ListData(
-            games = it
-            //navController
-        )
+        ListData(games = it)
     }
 }
 

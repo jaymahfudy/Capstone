@@ -40,35 +40,3 @@ abstract class NetworkBoundResourceList<ResultType, RequestType> {
 
     fun asFlow(): Flow<Resource<ResultType>> = result
 }
-
-abstract class NetworkBoundResourceOne<ResultType, RequestType> {
-    private suspend fun result(): Resource<ResultType> {
-        val dbSource = loadFromDB()
-        if (shouldFetch(dbSource)) {
-            when (val apiResponse = createCall()) {
-                is ApiResponse.Success -> {
-                    saveCallResult(apiResponse.data)
-                    return Resource.Success(loadFromDB())
-                }
-                is ApiResponse.Empty -> {
-                    Resource.Success(loadFromDB())
-                }
-                is ApiResponse.Error -> {
-                    onFetchFailed()
-                    Resource.Error(apiResponse.errorMessage)
-                }
-            }
-        }
-        return Resource.Success(loadFromDB())
-    }
-
-    protected open fun onFetchFailed() {}
-
-    protected abstract fun loadFromDB(): ResultType
-
-    protected abstract fun shouldFetch(data: ResultType?): Boolean
-
-    protected abstract suspend fun createCall(): ApiResponse<RequestType>
-
-    protected abstract suspend fun saveCallResult(data: RequestType)
-}

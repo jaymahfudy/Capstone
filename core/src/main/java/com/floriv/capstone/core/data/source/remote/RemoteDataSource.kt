@@ -4,7 +4,6 @@ import android.util.Log
 import com.floriv.capstone.core.data.source.remote.network.ApiResponse
 import com.floriv.capstone.core.data.source.remote.network.ApiService
 import com.floriv.capstone.core.data.source.remote.response.DetailGameResponse
-import com.floriv.capstone.core.data.source.remote.response.ResultsItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
