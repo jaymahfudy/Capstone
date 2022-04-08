@@ -1,4 +1,4 @@
-package com.floriv.capstone.detail
+package com.floriv.capstone.core.ui.detail
 
 import android.util.TypedValue
 import android.widget.TextView
@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import coil.compose.rememberAsyncImagePainter
-import com.floriv.capstone.R
+import com.floriv.capstone.core.R
 import org.koin.androidx.compose.getViewModel
 
 @Composable

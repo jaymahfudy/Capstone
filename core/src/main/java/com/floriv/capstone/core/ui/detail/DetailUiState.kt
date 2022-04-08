@@ -1,4 +1,4 @@
-package com.floriv.capstone.detail
+package com.floriv.capstone.core.ui.detail
 
 import com.floriv.capstone.core.domain.model.Game
 

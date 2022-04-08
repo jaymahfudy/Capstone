@@ -1,4 +1,4 @@
-package com.floriv.capstone.detail
+package com.floriv.capstone.core.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

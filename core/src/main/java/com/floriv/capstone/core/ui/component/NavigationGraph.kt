@@ -1,12 +1,9 @@
-package com.floriv.capstone.ui.component
+package com.floriv.capstone.core.ui.component
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.floriv.capstone.detail.DetailScreen
-import com.floriv.capstone.favorite.FavoriteScreen
-import com.floriv.capstone.home.HomeScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -16,16 +13,16 @@ fun NavigationGraph(navController: NavHostController) {
     ) {
         composable(BottomNavItem.Home.screen_route) {
             //val viewModel = getViewModel<HomeViewModel>()
-            HomeScreen(navController)
+            //HomeScreen(navController)
         }
         composable(BottomNavItem.Favorite.screen_route) {
             //val viewModel = getViewModel<FavoriteViewModel>()
-            FavoriteScreen(navController)
+            //FavoriteScreen()
         }
         composable("detail/{id}") { backStackEntry ->
             //val viewModel = getViewModel<DetailViewModel>()
             val id = backStackEntry.arguments?.getString("id")
-            DetailScreen(id)
+            //DetailScreen(id)
         }
     }
 }

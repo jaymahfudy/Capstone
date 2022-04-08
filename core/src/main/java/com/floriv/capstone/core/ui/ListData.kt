@@ -1,5 +1,6 @@
-package com.floriv.capstone.core
+package com.floriv.capstone.core.ui
 
+import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -14,17 +15,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.floriv.capstone.core.domain.model.Game
+import com.floriv.capstone.core.ui.detail.DetailActivity
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
 @Composable
-fun ListData(games: List<Game>, navController: NavHostController) {
+fun ListData(
+    games: List<Game>
+    //navController: NavHostController
+) {
+    val context = LocalContext.current
     LazyVerticalGrid(
         cells = GridCells.Adaptive(128.dp),
         // content padding
@@ -42,7 +48,10 @@ fun ListData(games: List<Game>, navController: NavHostController) {
                         .fillMaxWidth(),
                     elevation = 8.dp,
                     onClick = {
-                        navController.navigate("detail/${game.id}")
+                        //navController.navigate("detail/${game.id}")
+                        val intent = Intent(context, DetailActivity::class.java)
+                        intent.putExtra("id", game.id.toString())
+                        context.startActivity(intent)
                     }
                 ) {
                     Column {

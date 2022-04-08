@@ -1,4 +1,4 @@
-package com.floriv.capstone.ui.component
+package com.floriv.capstone.core.ui.component
 
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -11,7 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.floriv.capstone.R
+import com.floriv.capstone.core.R
 
 @Composable
 fun BottomNavigation(navController: NavController) {

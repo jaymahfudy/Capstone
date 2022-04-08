@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
-import com.floriv.capstone.core.ListData
+import com.floriv.capstone.core.ui.ListData
 import org.koin.androidx.compose.getViewModel
 
 
@@ -14,7 +14,10 @@ fun HomeScreen(navController: NavHostController) {
     viewModel.getAllGames()
     val viewState by viewModel.state.collectAsState()
     viewState.data?.let {
-        ListData(games = it, navController)
+        ListData(
+            games = it
+            //navController
+        )
     }
 }
 

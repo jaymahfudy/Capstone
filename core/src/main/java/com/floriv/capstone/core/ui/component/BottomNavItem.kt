@@ -1,6 +1,6 @@
-package com.floriv.capstone.ui.component
+package com.floriv.capstone.core.ui.component
 
-import com.floriv.capstone.R
+import com.floriv.capstone.core.R
 
 sealed class BottomNavItem(var title: String, var icon: Int, var screen_route: String) {
 

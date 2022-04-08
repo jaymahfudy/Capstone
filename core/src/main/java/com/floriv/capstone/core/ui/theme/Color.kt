@@ -1,4 +1,4 @@
-package com.floriv.capstone.ui.theme
+package com.floriv.capstone.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
