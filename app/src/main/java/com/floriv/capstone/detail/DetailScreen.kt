@@ -1,6 +1,5 @@
 package com.floriv.capstone.detail
 
-import android.util.Log
 import android.util.TypedValue
 import android.widget.TextView
 import androidx.compose.foundation.Image
@@ -14,16 +13,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import coil.compose.rememberAsyncImagePainter
 import com.floriv.capstone.R
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun DetailScreen(detailViewModel: DetailViewModel, id: String?) {
-    detailViewModel.getGame(id!!)
-    val viewState by detailViewModel.state.collectAsState()
+fun DetailScreen(id: String?) {
+    val viewModel = getViewModel<DetailViewModel>()
+    viewModel.getGame(id!!)
+    val viewState by viewModel.state.collectAsState()
     viewState.data?.let {
         Box(Modifier.fillMaxSize()) {
             Column {
@@ -53,7 +53,7 @@ fun DetailScreen(detailViewModel: DetailViewModel, id: String?) {
                     favIcon = !favIcon!!
                     val game = it
                     game.isFavorite = favIcon
-                    detailViewModel.updateGame(game)
+                    viewModel.updateGame(game)
                 }
             ) {
                 Image(

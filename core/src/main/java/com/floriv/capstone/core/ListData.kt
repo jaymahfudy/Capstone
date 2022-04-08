@@ -1,6 +1,5 @@
-package com.floriv.capstone.ui.component
+package com.floriv.capstone.core
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -13,15 +12,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
-import com.floriv.capstone.R
 import com.floriv.capstone.core.domain.model.Game
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
@@ -60,26 +58,12 @@ fun ListData(games: List<Game>, navController: NavHostController) {
                                 modifier = Modifier
                                     .size(128.dp)
                             )
-                            /*Box(
-                                modifier = Modifier
-                                    .clip(CircleShape)
-                                    .background(Color.Gray)
-                                    .align(Alignment.TopEnd)
-                                    .padding(4.dp)
-                            ) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.ic_favorite),
-                                    contentDescription = "Icon",
-                                    modifier = Modifier
-                                        .align(Alignment.Center)
-                                )
-                            }*/
                         }
                         Text(
                             text = game.name,
                             fontWeight = FontWeight.Bold,
                             fontSize = 16.sp,
-                            color = colorResource(id = R.color.black),
+                            color = Color.Black,
                             textAlign = TextAlign.Center,
                             modifier = Modifier
                                 .fillMaxWidth()

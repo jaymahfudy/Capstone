@@ -3,8 +3,8 @@ package com.floriv.capstone.di
 import com.floriv.capstone.home.HomeViewModel
 import com.floriv.capstone.core.domain.usecase.GameInteractor
 import com.floriv.capstone.core.domain.usecase.GameUseCase
-import com.floriv.capstone.detail.DetailViewModel
 import com.floriv.capstone.favorite.FavoriteViewModel
+import com.floriv.capstone.detail.DetailViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
