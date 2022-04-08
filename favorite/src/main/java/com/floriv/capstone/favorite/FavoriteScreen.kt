@@ -10,7 +10,7 @@ import org.koin.androidx.compose.getViewModel
 fun FavoriteScreen(
     //navController: NavHostController
 ) {
-    val viewModel = getViewModel<FavoriteViewModel>()
+    val viewModel = getViewModel<com.floriv.capstone.favorite.FavoriteViewModel>()
     viewModel.getFavoriteGames()
     val viewState by viewModel.state.collectAsState()
     viewState.data?.let {

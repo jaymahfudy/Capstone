@@ -16,11 +16,11 @@
             android:exported="false"
             android:label="@string/title_activity_detail"
             android:theme="@style/Theme.Capstone" />
-        <activity
+<!--        <activity
             android:name=".favorite.FavoriteActivity"
             android:exported="false"
             android:label="@string/title_activity_favorite"
-            android:theme="@style/Theme.Capstone" />
+            android:theme="@style/Theme.Capstone" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true"

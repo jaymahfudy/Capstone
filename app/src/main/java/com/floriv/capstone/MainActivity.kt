@@ -2,6 +2,8 @@ package com.floriv.capstone
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,8 +18,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.floriv.capstone.favorite.FavoriteActivity
 import com.floriv.capstone.home.HomeScreen
+import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
+import com.google.android.play.core.splitinstall.SplitInstallRequest
+import java.lang.Exception
 
 class MainActivity : ComponentActivity() {
 
@@ -67,8 +71,46 @@ fun ActionBar() {
                 Icon(Icons.Filled.Share, null)
             }*/
             IconButton(onClick = {
-                val intent = Intent(context, FavoriteActivity::class.java)
-                context.startActivity(intent)
+                try {
+                    val splitInstallManager = SplitInstallManagerFactory.create(context)
+                    val moduleFavorite = "favorite"
+                    if (splitInstallManager.installedModules.contains(moduleFavorite)) {
+                        val intent = Intent(
+                            context,
+                            Class.forName("com.floriv.capstone.favorite.FavoriteActivity")
+                        )
+                        context.startActivity(intent)
+                        Toast.makeText(context, "Open module", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val request = SplitInstallRequest.newBuilder()
+                            .addModule(moduleFavorite)
+                            .build()
+                        splitInstallManager.startInstall(request)
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    context,
+                                    "Success installing module",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                val intent = Intent(
+                                    context,
+                                    Class.forName("com.floriv.capstone.favorite.FavoriteActivity")
+                                )
+                                context.startActivity(intent)
+                            }
+                            .addOnFailureListener {
+                                Log.d("ZZZ", it.message.toString())
+                                Toast.makeText(
+                                    context,
+                                    "Error installing module",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                    }
+                } catch (e: Exception) {
+                    Log.d("ActionBar", e.message.toString())
+                    Toast.makeText(context, "Module not found", Toast.LENGTH_SHORT).show()
+                }
             }) {
                 Icon(Icons.Filled.Favorite, null)
             }
